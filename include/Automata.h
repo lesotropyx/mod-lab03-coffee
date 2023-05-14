@@ -3,26 +3,33 @@
 #define INCLUDE_AUTOMATA_H_
 #include<iostream>
 #include<string>
-class CofeeMachine{
- public:
-  CofeeMachine(int* prices_, std :: string* menu_, int kol_);
-  int cash;
-  void on();
-  void off();
-  void coin(int a);
-  void getMenu();
-  std :: string getState();
-  void choice(int ind);
-  void check();
-  void cancel();
-  void cook();
-  void finish();
- private:
-  int kol;
-  std :: string* menu;
-  int* prices;
-  enum state { OFF, WAIT, ACCEPT, CHECK, COOK };
-  int indchoose;
-  state st;
+enum class STATES {
+    OFF,
+    WAIT,
+    ACCEPT,
+    CHECK,
+    COOK
+};
+
+class Automata {
+public:
+    Automata() : cash(0), state(STATES::OFF) {}
+
+    void on();
+    void off();
+    void coin(int value);
+    void getMenu();
+    STATES getState();
+    void choice(int drink);
+    bool check(int drink);
+    void cancel();
+    void cook();
+    void finish();
+
+private:
+    int cash;
+    std::string menu[3] = {"Raf", "Espresso", "Flat-white"};
+    int prices[3] = {30, 50, 40};
+    STATES state;
 };
 #endif  // INCLUDE_AUTOMATA_H_

@@ -2,76 +2,74 @@
 #include "Automata.h"
 #include <iostream>
 #include <string>
-CofeeMachine :: CofeeMachine(int* prices_, std :: string* menu_, int kol_) {
-  st = OFF , indchoose = -1 , cash = 0;
-  prices = prices_, menu = menu_, kol = kol_;
-}
-void CofeeMachine :: on() {
-  if (st == OFF) {
-    st = WAIT;
-  }
-}
-void CofeeMachine :: off() {
-  if (st == WAIT) {
-    st = OFF;
-  }
-}
-void CofeeMachine :: coin(int a) {
-  if (st == WAIT || st == ACCEPT) {
-    st = ACCEPT;
-    cash = cash + a;
-  }
-}
-void CofeeMachine :: cancel() {
-  if (st == ACCEPT || st == CHECK) {
-    st = WAIT;
-    indchoose = -1;
-  }
-}
-void CofeeMachine :: finish() {
-  if (st == COOK) {
-    st = WAIT;
-    indchoose = -1;
-    std :: cout<< "Take your drink \n";
-  }
-}
-void CofeeMachine :: cook() {
-  if (st == CHECK) {
-    st = COOK;
-  }
-}
-void CofeeMachine :: choice(int ind) {
-  if (st == ACCEPT) {
-    if ( ind >= 1 && ind <= kol ) {
-    indchoose = ind - 1; st = CHECK;
-    } else {
-      indchoose = -1;
+Automata::Automata() : cash(0), state(STATES::OFF) {}
+
+void Automata::on() {
+    if (state == STATES::OFF) {
+        state = STATES::WAIT;
     }
-  }
 }
-void CofeeMachine :: check() {
-  if (st == CHECK) {
-    if (cash >= prices[indchoose] && indchoose != -1) {
-      std :: cout << "paying /n";
-      cash = cash - prices[indchoose];
+
+void Automata::off() {
+    if (state == STATES::WAIT) {
+        state = STATES::OFF;
     }
-  }
 }
-std :: string CofeeMachine :: getState() {
-  switch (st) {
-    case OFF : return "OFF";
-    case WAIT : return "WAIT";
-    case ACCEPT : return "ACCEPT";
-    case CHECK : return "CHECK";
-    case COOK : return "COOK";
-  }
-  return " ";
-}
-void CofeeMachine :: getMenu() {
-  std::string menu_;
-  std :: cout << "Menu : \n";
-    for (int i = 0; i < kol; i++) {
-      std :: cout << i+1 <<". "<< menu[i] <<" - ";
-      std :: cout << prices[i] << " рублей \n";
+
+void Automata::coin(int value) {
+    if (state == STATES::WAIT || state == STATES::ACCEPT) {
+        state = STATES::ACCEPT;
+        cash += value;
     }
+}
+
+void Automata::cancel() {
+    if (state == STATES::ACCEPT || state == STATES::CHECK) {
+        state = STATES::WAIT;
+    }
+}
+
+void Automata::finish() {
+    if (state == STATES::COOK) {
+        state = STATES::WAIT;
+        std::cout << "Take your drink" << std::endl;
+    }
+}
+
+void Automata::cook() {
+    if (state == STATES::CHECK) {
+        state = STATES::COOK;
+    }
+}
+
+void Automata::choice(int drink) {
+    if (state == STATES::ACCEPT) {
+        if (drink >= 1 && drink <= 3) {
+            indchoose = drink - 1;
+            state = STATES::CHECK;
+        } else {
+            indchoose = -1;
+        }
+    }
+}
+
+bool Automata::check(int drink) {
+    if (state == STATES::CHECK) {
+        if (cash >= prices[indchoose] && indchoose != -1) {
+            cash -= prices[indchoose];
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
+
+void Automata::getMenu() {
+    for (int i = 0; i < 3; i++) {
+        std::cout << menu[i] << " - " << prices[i] << " рублей" << std::endl;
+    }
+}
+
+STATES Automata::getState() {
+    return state;
 }
