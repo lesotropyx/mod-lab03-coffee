@@ -2,9 +2,7 @@
 #include <gtest/gtest.h>
 #include "Automata.h"
 TEST(task1, test1) {
-  int prices[3] = {30, 50, 40};
-    std::string menu[3] = {"Raf", "Espresso", "Flat-white"};
-    Automata coffeeMachine(prices, menu);
+    Automata coffeeMachine;
 
     coffeeMachine.on();
     coffeeMachine.getMenu();
@@ -21,9 +19,7 @@ TEST(task1, test1) {
     EXPECT_EQ("WAIT", result);
 }
 TEST(task1, test2) {
-   int prices[3] = {30, 50, 40};
-    std::string menu[3] = {"Raf", "Espresso", "Flat-white"};
-    Automata coffeeMachine(prices, menu);
+    Automata coffeeMachine;
 
     coffeeMachine.on();
     coffeeMachine.getMenu();
@@ -36,9 +32,7 @@ TEST(task1, test2) {
     EXPECT_EQ("CHECK", result);
 }
 TEST(task1, test3) {
-   int prices[3] = {30, 50, 40};
-    std::string menu[3] = {"Raf", "Espresso", "Flat-white"};
-    Automata coffeeMachine(prices, menu);
+    Automata coffeeMachine;
 
     coffeeMachine.on();
     coffeeMachine.getMenu();
