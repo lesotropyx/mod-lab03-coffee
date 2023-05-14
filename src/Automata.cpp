@@ -71,5 +71,12 @@ void Automata::getMenu() {
 }
 
 STATES Automata::getState() {
-    return state;
+    switch (st) {
+    case OFF : return "OFF";
+    case WAIT : return "WAIT";
+    case ACCEPT : return "ACCEPT";
+    case CHECK : return "CHECK";
+    case COOK : return "COOK";
+  }
+  return " ";
 }
