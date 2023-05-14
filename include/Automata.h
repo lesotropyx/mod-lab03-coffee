@@ -13,9 +13,7 @@ enum class STATES {
 
 class Automata {
 public:
-
     Automata() : cash(0), state(STATES::OFF), indchoose(-1) {}
-
     void on();
     void off();
     void coin(int value);
@@ -28,7 +26,6 @@ public:
     void finish();
 
 private:
-
     int cash;
     int indchoose;
     std::string menu[3] = {"Raf", "Espresso", "Flat-white"};
