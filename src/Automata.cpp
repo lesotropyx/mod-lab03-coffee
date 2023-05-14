@@ -2,7 +2,7 @@
 #include "Automata.h"
 #include <iostream>
 #include <string>
-Automata::Automata() : cash(0), state(STATES::OFF),indchoose(-1) {}
+Automata::Automata() : cash(0), state(STATES::OFF), indchoose(-1) {}
 
 void Automata::on() {
     if (state == STATES::OFF) {
