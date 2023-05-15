@@ -11,9 +11,9 @@ int main() {
     coffeeMachine.getMenu();
     coffeeMachine.on();
     coffeeMachine.coin(50); //купим 2 кофе, должно пройти
-    cout<< "Текущее состояние( должно быть ACCEPT): ";
-    cout<< coffeeMachine.getState();
-    cout<< endl;
+    std::cout<< "Текущее состояние( должно быть ACCEPT): ";
+    std::cout<< coffeeMachine.getState();
+    std::cout<<  std::endl;
 
     coffeeMachine.choice(2);
     if (coffeeMachine.check(2)) {
@@ -22,8 +22,8 @@ int main() {
     } else {
         coffeeMachine.cancel();
     }
-    cout<< "Текущее состояние (должно быть WAIT): ";
+    std::cout<< "Текущее состояние (должно быть WAIT): ";
     std :: string result2 = coffeeMachine.getState();
-    cout<< result2;
+    std::cout<< result2;
     return 0;
 }
