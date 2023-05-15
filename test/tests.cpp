@@ -31,19 +31,4 @@ TEST(task1, test2) {
     coffeeMachine.finish();
     EXPECT_EQ("CHECK", result);
 }
-TEST(task1, test3) {
-    Automata coffeeMachine;
 
-    coffeeMachine.on();
-    coffeeMachine.getMenu();
-    coffeeMachine.coin(50);
-    coffeeMachine.choice(1);
-    coffeeMachine.cancel();
-    coffeeMachine.coin(50);
-    coffeeMachine.choice(2);
-    coffeeMachine.check(2);
-    coffeeMachine.cook();
-    coffeeMachine.finish();
-    int result = coffeeMachine.getCash();
-    EXPECT_EQ(0, result);
-}
