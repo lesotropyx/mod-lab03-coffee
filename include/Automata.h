@@ -12,6 +12,7 @@ enum class STATES {
 };
 
 class Automata {
+    
 public :
 
     Automata() : cash(0), state(STATES::OFF), indchoose(-1) {}
@@ -25,6 +26,7 @@ public :
     void cancel();
     void cook();
     void finish();
+
 private :
 
     int cash;
