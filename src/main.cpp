@@ -3,7 +3,7 @@
 
 #include "Automata.h"
 #include "iostream"
-using namespace std;
+
 
 int main() {
     Automata coffeeMachine;
@@ -12,8 +12,8 @@ int main() {
     coffeeMachine.on();
     coffeeMachine.coin(50); //купим 2 кофе, должно пройти
     cout<< "Текущее состояние( должно быть ACCEPT): ";
-    cout<<coffeeMachine.getState();
-    cout<<endl;
+    cout<< coffeeMachine.getState();
+    cout<< endl;
 
     coffeeMachine.choice(2);
     if (coffeeMachine.check(2)) {
@@ -24,6 +24,6 @@ int main() {
     }
     cout<< "Текущее состояние (должно быть WAIT): ";
     std :: string result2 = coffeeMachine.getState();
-    cout<<result2;
+    cout<< result2;
     return 0;
 }

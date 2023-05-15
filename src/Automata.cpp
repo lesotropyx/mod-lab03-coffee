@@ -32,7 +32,7 @@ void Automata::cancel() {
 void Automata::finish() {
     if (state == STATES::COOK) {
         state = STATES::WAIT;
-        std::cout << "Напиток приготовлен, заберите свой напиток " <<menu[indchoose] << std::endl;
+        std::cout << "Напиток приготовлен" <<menu[indchoose] << std::endl;
     }
 }
 
