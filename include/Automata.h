@@ -18,13 +18,12 @@ public :
     void off();
     void coin(int value);
     void getMenu();
-    STATES getState();
+    std :: string getState();
     void choice(int drink);
     bool check(int drink);
     void cancel();
     void cook();
     void finish();
-
 private :
     int cash;
     int indchoose;

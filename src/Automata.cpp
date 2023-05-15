@@ -32,7 +32,7 @@ void Automata::cancel() {
 void Automata::finish() {
     if (state == STATES::COOK) {
         state = STATES::WAIT;
-        std::cout << "Take your drink" << std::endl;
+        std::cout << "Напиток приготовлен, заберите свой напиток " <<menu[indchoose] << std::endl;
     }
 }
 
@@ -70,13 +70,18 @@ void Automata::getMenu() {
     }
 }
 
-STATES Automata::getState() {
-    switch (st) {
-    case OFF : return "OFF";
-    case WAIT : return "WAIT";
-    case ACCEPT : return "ACCEPT";
-    case CHECK : return "CHECK";
-    case COOK : return "COOK";
-  }
-  return " ";
+std::string Automata::getState() {
+    if (state == STATES::OFF) {
+        return "OFF";
+    } else if (state == STATES::WAIT) {
+        return "WAIT";
+    } else if (state == STATES::ACCEPT) {
+        return "ACCEPT";
+    } else if (state == STATES::CHECK) {
+        return "CHECK";
+    } else if (state == STATES::COOK) {
+        return "COOK";
+    } else {
+        return "Unknown State";
+    }
 }
