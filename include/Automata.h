@@ -12,7 +12,7 @@ enum class STATES {
 };
 
 class Automata {
-public:
+ public:
     Automata() : cash(0), state(STATES::OFF), indchoose(-1) {}
     void on();
     void off();
